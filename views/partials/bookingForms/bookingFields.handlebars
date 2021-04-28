@@ -6,4 +6,16 @@
     <label for="end_date">End Date</label>
     <input type="date" id="end_date" name="end_date" {{#if end_date}}value={{end_date}}{{/if}}>
 </div>
+<div>
+    <label for="properties">Select Property</label>
+    <select name="properties" id="properties">
+        {{#each properties}}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+</div>
+<div>
+    <label for="customers">Customers (comma seperated ids)</label>
+    <input type="text" id="customers" name="customers">
+</div>
 <button>Submit</button>
