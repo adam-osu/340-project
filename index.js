@@ -63,6 +63,7 @@ app.get("/bookings/new", (req, res) => {
 app.get("/bookings/edit/:id", (req, res) => {
   res.render("editBooking", {
     // test data
+    bookingID: 1234,
     start_date: "2020-07-04",
     end_date: "2020-07-08",
   });
@@ -118,13 +119,10 @@ app.get("/invoices", (req, res) => {
   res.render("invoices");
 });
 
-app.get("/invoices/new", (req, res) => {
-  res.render("addInvoice");
-});
-
 app.get("/invoices/edit/:id", (req, res) => {
   res.render("editInvoice", {
     // test data
+    invoiceId: 1234,
     totalDue: 3000,
     amountPaid: 1500
   });
@@ -136,7 +134,7 @@ app.post("/invoices", (req, res) => {
 
 app.get("/invoices/:id", (req, res) => {
   res.render("invoice", {
-    totalDue: 3000,
+    invoiceId: 1234,
   });
 });
 
