@@ -63,7 +63,7 @@ app.get("/bookings/new", (req, res) => {
 app.get("/bookings/edit/:id", (req, res) => {
   res.render("editBooking", {
     // test data
-    bookingID: 1234,
+    bookingId: 1234,
     start_date: "2020-07-04",
     end_date: "2020-07-08",
   });
