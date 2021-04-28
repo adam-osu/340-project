@@ -110,6 +110,36 @@ app.get("/customers/:id", (req, res) => {
   });
 });
 
+/////////////
+// Invoices
+/////////////
+
+app.get("/invoices", (req, res) => {
+  res.render("invoices");
+});
+
+app.get("/invoices/new", (req, res) => {
+  res.render("addInvoice");
+});
+
+app.get("/invoices/edit/:id", (req, res) => {
+  res.render("editInvoice", {
+    // test data
+    totalDue: 3000,
+    amountPaid: 1500
+  });
+});
+
+app.post("/invoices", (req, res) => {
+  res.status(200).send(req.body);
+});
+
+app.get("/invoices/:id", (req, res) => {
+  res.render("invoice", {
+    totalDue: 3000,
+  });
+});
+
 app.listen(PORT, () => {
   `Server is listening on port ${PORT}`;
 });
