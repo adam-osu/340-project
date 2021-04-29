@@ -57,7 +57,12 @@ app.get("/bookings", (req, res) => {
 });
 
 app.get("/bookings/new", (req, res) => {
-  res.render("addBooking");
+  res.render("addBooking", {
+    properties: [
+      { id: 1, name: "Test Property 1" },
+      { id: 2, name: "Test Property 2" },
+    ],
+  });
 });
 
 app.get("/bookings/edit/:id", (req, res) => {
