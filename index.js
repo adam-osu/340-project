@@ -2,7 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 
-const PORT = 4000;
+const PORT = process.env.NODE_ENV === "development" ? 4000 : process.argv[2];
 const app = express();
 
 app.engine(
@@ -134,7 +134,7 @@ app.get("/invoices/edit/:id", (req, res) => {
     // test data
     invoiceId: 1234,
     totalDue: 3000,
-    amountPaid: 1500
+    amountPaid: 1500,
   });
 });
 
