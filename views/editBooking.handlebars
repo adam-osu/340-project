@@ -3,5 +3,11 @@
     <h1>Edit Booking {{ start_date }}</h1>
 </header>
 <section>
-    {{> "bookingForms/editBookingForm" }}
+    <div class="add-booking__search-forms">
+        {{> "propertySearch/propertySearch" }}
+        {{> "customerSearch/customerSearch" }}
+    </div>
+    <div>
+        {{> "bookingForms/editBookingForm" }}
+    </div>
 </section>
