@@ -49,9 +49,13 @@ body {
 }
 
 .navbar__nav-link--logo:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.add-customer__section div:first-child {
-  margin-right: 2rem;
+.property-search {
+  margin-bottom: 5rem;
+}
+
+.add-booking__search-forms {
+  margin-right: 5rem;
 }
