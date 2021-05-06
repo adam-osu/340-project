@@ -2,5 +2,11 @@
     <h1>Add a New Booking</h1>
 </header>
 <section>
-    {{> "bookingForms/newBookingForm" }}
+    <div class="add-booking__search-forms">
+        {{> "propertySearch/propertySearch" }}
+        {{> "customerSearch/customerSearch" }}
+    </div>
+    <div>
+        {{> "bookingForms/newBookingForm" }}
+    </div>
 </section>
