@@ -51,3 +51,7 @@ body {
 .navbar__nav-link--logo:hover {
     text-decoration: none;
 }
+
+.add-customer__section div:first-child {
+  margin-right: 2rem;
+}
