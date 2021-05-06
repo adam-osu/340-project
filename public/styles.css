@@ -52,6 +52,11 @@ body {
   text-decoration: none;
 }
 
+.current-property,
+.current-customers {
+  margin-bottom: 1rem;;
+}
+
 .property-search {
   margin-bottom: 5rem;
 }
