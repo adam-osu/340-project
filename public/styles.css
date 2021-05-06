@@ -52,9 +52,31 @@ body {
   text-decoration: none;
 }
 
+.table-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.4rem;
+}
+
+.btn--small {
+  font-size: 1rem;
+  padding: 0.8rem;
+}
+
+.btn--link {
+  background-color: var(--color);
+  border: 2px solid var(--color);
+  color: var(--color-bg);
+  border-radius: var(--border-radius);
+}
+
+.btn--link:hover {
+  text-decoration: none;
+}
+
 .current-property,
 .current-customers {
-  margin-bottom: 1rem;;
+  margin-bottom: 1rem;
 }
 
 .property-search {
