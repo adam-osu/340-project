@@ -9,10 +9,6 @@ class InvoicesController {
     });
   }
   
-  create(req, res) {
-    res.status(200).send(req.body);
-  }
-
   edit(req, res) {
     res.render("editInvoice", {
       // test data

@@ -18,13 +18,6 @@ module.exports = (app) => {
   app.get("/invoices/:id", invoicesController.show);
 
   /**
-   * POST /invoices
-   * 
-   * Create new invoice
-   */
-  app.post("/invoices", invoicesController.create);
-
-  /**
    * GET /invoices/edit/:id
    * 
    * Edit invoice page
