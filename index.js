@@ -17,9 +17,9 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 require("./routes/properties.route")(app);
-require("./routes/bookings.route")(app)
-require("./routes/customers.route")(app)
-require("./routes/invoices.route")(app)
+require("./routes/bookings.route")(app);
+require("./routes/customers.route")(app);
+require("./routes/invoices.route")(app);
 
 app.listen(PORT, () => {
   `Server is listening on port ${PORT}`;
