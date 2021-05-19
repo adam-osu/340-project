@@ -18,38 +18,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 require("./routes/properties.route")(app);
 require("./routes/bookings.route")(app)
+require("./routes/customers.route")(app)
 
 /////////////
 // Customers
 /////////////
 
-app.get("/customers", (req, res) => {
-  res.render("customers");
-});
-
-app.get("/customers/new", (req, res) => {
-  res.render("addCustomer");
-});
-
-app.get("/customers/edit/:id", (req, res) => {
-  res.render("editCustomer", {
-    // test data
-    first_name: "John",
-    last_name: "Doe",
-    email: "johndoe@jd.com",
-  });
-});
-
-app.post("/customers", (req, res) => {
-  res.status(200).send(req.body);
-});
-
-app.get("/customers/:id", (req, res) => {
-  res.render("customer", {
-    first_name: "John",
-    last_name: "Doe",
-  });
-});
 
 /////////////
 // Invoices

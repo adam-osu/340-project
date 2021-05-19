@@ -37,7 +37,7 @@ class BookingsController {
   }
 
   update(req, res) {
-    res.status(201).send({message: 'Updated!'})
+    res.status(201).send({message: 'Updated!'});
   }
 }
 
