@@ -16,37 +16,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-/////////////
-// Properties
-/////////////
-
-app.get("/properties", (req, res) => {
-  res.render("properties");
-});
-
-app.get("/properties/new", (req, res) => {
-  res.render("addProperty");
-});
-
-app.get("/properties/edit/:id", (req, res) => {
-  res.render("editProperty", {
-    // test data
-    propertyName: "Test",
-    address: "123 Test Road",
-    rate: 40,
-    maxOccupancy: 12,
-  });
-});
-
-app.post("/properties", (req, res) => {
-  res.status(200).send(req.body);
-});
-
-app.get("/properties/:id", (req, res) => {
-  res.render("property", {
-    propertyName: "433 Nowhere Road",
-  });
-});
+require("./routes/properties.route")(app);
 
 /////////////
 // Bookings
