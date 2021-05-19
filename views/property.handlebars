@@ -1,48 +1,48 @@
 <header>
-    <h1>Property:</h1>
+  <h1>Property:</h1>
 </header>
 <section>
-    <table border="1">
-        <thead>
-            <th colspan="2">Property</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>ID</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Building Name</td>
-                <td>WonderWave</td>
-            </tr>
-            <tr>
-                <td>Address</td>
-                <td>123 Go Fishing Way</td>
-            </tr>
-            <tr>
-                <td>Rate</td>
-                <td>150</td>
-            </tr>
-            <tr>
-                <td>Max Occupancy</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>Created At</td>
-                <td>10-23-2020</td>
-            </tr>
-            <tr>
-                <td>Bookings</td>
-                <td><a href="#">View</a></td>
-            </tr>
-            <tr>
-                <td>Edit</td>
-                <td><a href="/properties/edit/1">Edit</a></td>
-            </tr>
-            <tr>
-                <td>Delete</td>
-                <td><a href="#">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
+  <table border="1">
+    <thead>
+      <th colspan="2">Property</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>{{property.id}}</td>
+      </tr>
+      <tr>
+        <td>Building Name</td>
+        <td>{{property.building_name}}</td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>{{property.address}}</td>
+      </tr>
+      <tr>
+        <td>Rate</td>
+        <td>{{property.rate}}</td>
+      </tr>
+      <tr>
+        <td>Max Occupancy</td>
+        <td>{{property.max_occupancy}}</td>
+      </tr>
+      <tr>
+        <td>Created At</td>
+        <td>{{property.created_at}}</td>
+      </tr>
+      <tr>
+        <td>Bookings</td>
+        <td><a href="#">View</a></td>
+      </tr>
+      <tr>
+        <td>Edit</td>
+        <td><a href="/properties/edit/{{property.id}}">Edit</a></td>
+      </tr>
+      <tr>
+        <td>Delete</td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
