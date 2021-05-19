@@ -10,9 +10,8 @@ class PropertiesController {
   }
 
   async index(req, res) {
-    // const data = await this.properties.findAll()
-    // return res.send(data)
-    res.render("properties");
+    const properties = await this.properties.findAll();
+    res.render("properties", { properties });
   }
 
   async show(req, res) {
