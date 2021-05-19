@@ -28,16 +28,17 @@ class PropertiesController {
   }
 
   async create(req, res) {
-    // const data = await this.properties.create({
-    //   building_name: "Node",
-    //   address: "JavaScript",
-    //   rate: 400,
-    //   max_occupancy: 16,
-    //   created_at: new Date(),
-    // });
-    // return res.send(data);
+    const { building_name, address, rate, max_occupancy } = req.body;
 
-    res.status(200).send(req.body);
+    await this.properties.create({
+      building_name,
+      address,
+      rate,
+      max_occupancy,
+      created_at: new Date(),
+    });
+
+    res.redirect('/properties')
   }
 
   edit(req, res) {
