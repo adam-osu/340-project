@@ -1,9 +1,22 @@
+const { PropertiesService } = require("../services/properties.services");
+const autoBind = require("auto-bind");
+
 class PropertiesController {
-  index(req, res) {
+  constructor() {
+    this.properties = new PropertiesService();
+    autoBind(this);
+  }
+
+  async index(req, res) {
+    // const data = await this.properties.findAll()
+    // return res.send(data)
     res.render("properties");
   }
 
-  show(req, res) {
+  async show(req, res) {
+    // const data = await this.properties.findOne(1);
+    // return res.send(data);
+
     res.render("property", {
       propertyName: "433 Nowhere Road",
     });
@@ -13,7 +26,16 @@ class PropertiesController {
     res.render("addProperty");
   }
 
-  create() {
+  async create(req, res) {
+    // const data = await this.properties.create({
+    //   building_name: "Node",
+    //   address: "JavaScript",
+    //   rate: 400,
+    //   max_occupancy: 16,
+    //   created_at: new Date(),
+    // });
+    // return res.send(data);
+
     res.status(200).send(req.body);
   }
 
