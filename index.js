@@ -17,47 +17,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 require("./routes/properties.route")(app);
-
-/////////////
-// Bookings
-/////////////
-
-app.get("/bookings", (req, res) => {
-  res.render("bookings");
-});
-
-app.get("/bookings/new", (req, res) => {
-  res.render("addBooking", {
-    properties: [
-      { id: 1, name: "Test Property 1" },
-      { id: 2, name: "Test Property 2" },
-    ],
-  });
-});
-
-app.get("/bookings/edit/:id", (req, res) => {
-  res.render("editBooking", {
-    // test data
-    bookingId: 1234,
-    start_date: "2020-07-04",
-    end_date: "2020-07-08",
-    property: 2,
-    properties: [
-      { id: 1, name: "Test Property 1" },
-      { id: 2, name: "Test Property 2" },
-    ],
-  });
-});
-
-app.post("/bookings", (req, res) => {
-  res.status(200).send(req.body);
-});
-
-app.get("/bookings/:id", (req, res) => {
-  res.render("booking", {
-    start_date: "2020-07-04",
-  });
-});
+require("./routes/bookings.route")(app)
 
 /////////////
 // Customers
