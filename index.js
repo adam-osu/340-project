@@ -16,78 +16,8 @@ app.use(express.static("public"));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-/////////////
-// Properties
-/////////////
-
-app.get("/properties", (req, res) => {
-  res.render("properties");
-});
-
-app.get("/properties/new", (req, res) => {
-  res.render("addProperty");
-});
-
-app.get("/properties/edit/:id", (req, res) => {
-  res.render("editProperty", {
-    // test data
-    propertyName: "Test",
-    address: "123 Test Road",
-    rate: 40,
-    maxOccupancy: 12,
-  });
-});
-
-app.post("/properties", (req, res) => {
-  res.status(200).send(req.body);
-});
-
-app.get("/properties/:id", (req, res) => {
-  res.render("property", {
-    propertyName: "433 Nowhere Road",
-  });
-});
-
-/////////////
-// Bookings
-/////////////
-
-app.get("/bookings", (req, res) => {
-  res.render("bookings");
-});
-
-app.get("/bookings/new", (req, res) => {
-  res.render("addBooking", {
-    properties: [
-      { id: 1, name: "Test Property 1" },
-      { id: 2, name: "Test Property 2" },
-    ],
-  });
-});
-
-app.get("/bookings/edit/:id", (req, res) => {
-  res.render("editBooking", {
-    // test data
-    bookingId: 1234,
-    start_date: "2020-07-04",
-    end_date: "2020-07-08",
-    property: 2,
-    properties: [
-      { id: 1, name: "Test Property 1" },
-      { id: 2, name: "Test Property 2" },
-    ],
-  });
-});
-
-app.post("/bookings", (req, res) => {
-  res.status(200).send(req.body);
-});
-
-app.get("/bookings/:id", (req, res) => {
-  res.render("booking", {
-    start_date: "2020-07-04",
-  });
-});
+require("./routes/properties.route")(app);
+require("./routes/bookings.route")(app)
 
 /////////////
 // Customers
