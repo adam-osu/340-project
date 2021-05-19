@@ -15,11 +15,11 @@ class PropertiesController {
   }
 
   async show(req, res) {
-    // const data = await this.properties.findOne(1);
-    // return res.send(data);
+    const { id } = req.params;
+    const [property] = await this.properties.findOne(id);
 
     res.render("property", {
-      propertyName: "433 Nowhere Road",
+      property,
     });
   }
 
