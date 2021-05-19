@@ -1,9 +1,9 @@
 const { BaseModel } = require("./base.model");
 const autoBind = require("auto-bind");
 
-class PropertyModel extends BaseModel {
+class BookingModel extends BaseModel {
   constructor() {
-    super({ name: "properties" });
+    super({ name: "bookings" });
     autoBind(this);
   }
 
@@ -15,9 +15,9 @@ class PropertyModel extends BaseModel {
     return super.findOne(id);
   }
 
-  create(property) {
-    return super.create(property);
+  create(booking) {
+    return super.create(booking);
   }
 }
 
-module.exports = { Property: new PropertyModel() };
+module.exports = { Booking: new BookingModel() };
