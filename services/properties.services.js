@@ -1,16 +1,17 @@
-const { Property } = require("../models/property.model");
-
 class PropertiesService {
+  constructor({ propertyModel }) {
+    this.propertyModel = propertyModel;
+  }
   async findAll() {
-    return await Property.findAll();
+    return await this.propertyModel.findAll();
   }
 
   async findOne(id) {
-    return await Property.findOne(id);
+    return await this.propertyModel.findOne(id);
   }
 
   async create(property) {
-    return await Property.create(property);
+    return await this.propertyModel.create(property);
   }
 }
 

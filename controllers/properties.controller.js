@@ -1,9 +1,11 @@
 const { PropertiesService } = require("../services/properties.services");
 const autoBind = require("auto-bind");
 
+const { Property } = require("../models/property.model");
+
 class PropertiesController {
   constructor() {
-    this.properties = new PropertiesService();
+    this.properties = new PropertiesService({ propertyModel: Property });
     autoBind(this);
   }
 
