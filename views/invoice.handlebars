@@ -1,36 +1,36 @@
 <header>
-    <h1>Invoice:</h1>
+  <h1>Invoice:</h1>
 </header>
 <section>
-    <table border="1">
-        <thead>
-            <th colspan="2">Invoice</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>ID</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Booking</td>
-                <td><a href="/bookings/1">View</a></td>
-            </tr>
-            <tr>
-                <td>Amount Paid</td>
-                <td>200</td>
-            </tr>
-            <tr>
-                <td>Total Due</td>
-                <td>150</td>
-            </tr>
-            <tr>
-                <td>Created At</td>
-                <td>3-1-2021</td>
-            </tr>
-            <tr>
-                <td>Edit</td>
-                <td><a href="/invoices/edit/1">Edit</a></td>
-            </tr>
-        </tbody>
-    </table>
+  <table border="1">
+    <thead>
+      <th colspan="2">Invoice</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>{{invoice.id}}</td>
+      </tr>
+      <tr>
+        <td>Booking</td>
+        <td><a href="/bookings/1">View</a></td>
+      </tr>
+      <tr>
+        <td>Amount Paid</td>
+        <td>{{invoice.amount_paid}}</td>
+      </tr>
+      <tr>
+        <td>Total Due</td>
+        <td>{{invoice.total_due}}</td>
+      </tr>
+      <tr>
+        <td>Created At</td>
+        <td>{{invoice.created_at}}</td>
+      </tr>
+      <tr>
+        <td>Edit</td>
+        <td><a href="/invoices/edit/{{invoice.id}}">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
 </section>

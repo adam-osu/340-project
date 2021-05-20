@@ -2,7 +2,6 @@ const { InvoicesService } = require("../services/invoices.service");
 const autoBind = require("auto-bind");
 
 const { Invoice } = require("../models/invoice.model");
-const invoiceModel = require("../models/invoice.model");
 
 class InvoicesController {
   constructor() {
@@ -15,9 +14,11 @@ class InvoicesController {
     res.render("invoices", { invoices });
   }
 
-  show(req, res) {
+  async show(req, res) {
+    const { id } = req.params;
+    const [invoice] = await this.invoicesService.findOne(id);
     res.render("invoice", {
-      invoiceId: 1234,
+      invoice,
     });
   }
 
