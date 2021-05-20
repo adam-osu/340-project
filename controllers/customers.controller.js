@@ -27,8 +27,15 @@ class CustomersController {
     res.render("addCustomer");
   }
 
-  create(req, res) {
-    res.status(200).send(req.body);
+  async create(req, res) {
+    const { first_name, last_name, email } = req.body;
+    await this.customersService.create({
+      first_name,
+      last_name,
+      email,
+      created_at: new Date(),
+    });
+    res.redirect("/customers");
   }
 
   edit(req, res) {
