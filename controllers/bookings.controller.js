@@ -1,6 +1,17 @@
+const { BookingsService } = require("../services/bookings.service");
+const autoBind = require("auto-bind");
+
+const { Booking } = require("../models/booking.model");
+
 class BookingsController {
-  index(req, res) {
-    res.render("bookings");
+  constructor() {
+    this.bookingService = new BookingsService({ bookingModel: Booking });
+    autoBind(this);
+  }
+
+  async index(req, res) {
+    const bookings = await this.bookingService.findAll();
+    res.render("bookings", { bookings });
   }
 
   show(req, res) {
@@ -37,7 +48,7 @@ class BookingsController {
   }
 
   update(req, res) {
-    res.status(201).send({message: 'Updated!'});
+    res.status(201).send({ message: "Updated!" });
   }
 }
 
