@@ -1,6 +1,17 @@
+const { CustomersService } = require("../services/customers.service");
+const autoBind = require("auto-bind");
+
+const { Customer } = require("../models/customer.model");
+
 class CustomersController {
-  index(req, res) {
-    res.render("customers");
+  constructor() {
+    this.customersService = new CustomersService({ customerModel: Customer });
+    autoBind(this);
+  }
+
+  async index(req, res) {
+    const customers = await this.customersService.findAll();
+    res.render("customers", { customers });
   }
 
   show(req, res) {
@@ -13,7 +24,7 @@ class CustomersController {
   _new(req, res) {
     res.render("addCustomer");
   }
-  
+
   create(req, res) {
     res.status(200).send(req.body);
   }
@@ -28,7 +39,7 @@ class CustomersController {
   }
 
   update(req, res) {
-    res.status(201).send({message: 'Updated!'});
+    res.status(201).send({ message: "Updated!" });
   }
 }
 
