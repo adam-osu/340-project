@@ -1,47 +1,50 @@
 <header>
-    <h1>Wonderwave 12-2-2021 - 12-5-2021</h1>
+  <h1>Wonderwave 12-2-2021 - 12-5-2021</h1>
 </header>
 <section>
-    <table border="1">
-        <thead>
-            <th colspan="2">Booking</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>ID</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Property</td>
-                <td><a href="/properties/1">Wonderwave</a></td>
-            </tr>
-            <tr>
-                <td>Customers</td>
-                <td>
-                    <p><a href="/customers/1">Jon Doe</a></p>
-                    <p>Jane Doe</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Start Date</td>
-                <td>12-2-2021</td>
-            </tr>
-            <tr>
-                <td>End Date</td>
-                <td>12-5-2021</td>
-            </tr>
-            <tr>
-                <td>Created At</td>
-                <td>3-1-2021</td>
-            </tr>
-            <tr>
-                <td>Edit</td>
-                <td><a href="/bookings/edit/1">Edit</a></td>
-            </tr>
-            <tr>
-                <td>Delete</td>
-                <td><a href="#">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
+  <table border="1">
+    <thead>
+      <th colspan="2">Booking</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>{{booking.id}}</td>
+      </tr>
+      <tr>
+        <td>Property</td>
+        <td><a
+            href="/properties/{{booking.property_id}}"
+          >{{booking.building_name}}</a></td>
+      </tr>
+      <tr>
+        <td>Customers</td>
+        <td>
+          {{#each customers}}
+            <p><a href="/customers/{{this.id}}">{{this.first_name}} {{ this.last_name }}</a></p>
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td>Start Date</td>
+        <td>{{booking.start_date}}</td>
+      </tr>
+      <tr>
+        <td>End Date</td>
+        <td>{{booking_end_date}}</td>
+      </tr>
+      <tr>
+        <td>Created At</td>
+        <td>{{booking.created_at}}</td>
+      </tr>
+      <tr>
+        <td>Edit</td>
+        <td><a href="/bookings/edit/{{booking.id}}">Edit</a></td>
+      </tr>
+      <tr>
+        <td>Delete</td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
 </section>

@@ -14,9 +14,16 @@ class BookingsController {
     res.render("bookings", { bookings });
   }
 
-  show(req, res) {
+  async show(req, res) {
+    const { id } = req.params;
+    const [[booking], customers] = await this.bookingService.findOne({
+      id,
+      withCustomers: true,
+    });
+
     res.render("booking", {
-      start_date: "2020-07-04",
+      booking,
+      customers,
     });
   }
 

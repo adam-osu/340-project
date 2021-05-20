@@ -6,8 +6,8 @@ class BookingsService {
     return await this.bookingModel.findAll();
   }
 
-  async findOne(id) {
-    return await this.bookingModel.findOne(id);
+  async findOne({id, withCustomers = false}) {
+    return await this.bookingModel.findOne({id, withCustomers});
   }
 
   async create(booking) {
