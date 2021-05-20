@@ -13,18 +13,18 @@ module.exports = (app) => {
   app.get("/properties", propertiesController.index);
 
   /**
-   * GET /properties/:id
-   *
-   * Single property page
-   */
-  app.get("/properties/:id", propertiesController.show);
-
-  /**
    * GET /properties/new
    *
    * New property page
    */
   app.get("/properties/new", propertiesController._new);
+
+  /**
+   * GET /properties/:id
+   *
+   * Single property page
+   */
+  app.get("/properties/:id", propertiesController.show);
 
   /**
    * POST /properties

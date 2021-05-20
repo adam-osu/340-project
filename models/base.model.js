@@ -6,14 +6,17 @@ class BaseModel {
     this.pool = pool;
   }
 
-  findAll() {
+  findAll(order = "DESC") {
     return new Promise((resolve, reject) => {
-      this.pool.query(`SELECT * FROM ${this.name}`, (err, rows) => {
-        if (err) {
-          return reject(err);
+      this.pool.query(
+        `SELECT * FROM ${this.name} ORDER BY created_at ${order};`,
+        (err, rows) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(rows);
         }
-        return resolve(rows);
-      });
+      );
     });
   }
 

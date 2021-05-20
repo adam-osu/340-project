@@ -10,17 +10,16 @@ class PropertiesController {
   }
 
   async index(req, res) {
-    // const data = await this.properties.findAll()
-    // return res.send(data)
-    res.render("properties");
+    const properties = await this.properties.findAll();
+    res.render("properties", { properties });
   }
 
   async show(req, res) {
-    // const data = await this.properties.findOne(1);
-    // return res.send(data);
+    const { id } = req.params;
+    const [property] = await this.properties.findOne(id);
 
     res.render("property", {
-      propertyName: "433 Nowhere Road",
+      property,
     });
   }
 
@@ -29,16 +28,17 @@ class PropertiesController {
   }
 
   async create(req, res) {
-    // const data = await this.properties.create({
-    //   building_name: "Node",
-    //   address: "JavaScript",
-    //   rate: 400,
-    //   max_occupancy: 16,
-    //   created_at: new Date(),
-    // });
-    // return res.send(data);
+    const { building_name, address, rate, max_occupancy } = req.body;
 
-    res.status(200).send(req.body);
+    await this.properties.create({
+      building_name,
+      address,
+      rate,
+      max_occupancy,
+      created_at: new Date(),
+    });
+
+    res.redirect('/properties')
   }
 
   edit(req, res) {
