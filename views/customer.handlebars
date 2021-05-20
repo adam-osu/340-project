@@ -1,40 +1,44 @@
 <header>
-    <h1>Customer:</h1>
+  <h1>Customer:</h1>
 </header>
 <section>
-    <table border="1">
-        <thead>
-            <th colspan="2">Customer</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>First Name</td>
-                <td>John</td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>Doe</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>jdoe@yo.com</td>
-            </tr>
-            <tr>
-                <td>Created At</td>
-                <td>12-13-2019</td>
-            </tr>
-            <tr>
-                <td>Bookings</td>
-                <td><a href="#">View</a></td>
-            </tr>
-            <tr>
-                <td>Edit</td>
-                <td><a href="/customers/edit/1">Edit</a></td>
-            </tr>
-            <tr>
-                <td>Delete</td>
-                <td><a href="#">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
+  <table border="1">
+    <thead>
+      <th colspan="2">Customer</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>{{customer.id}}</td>
+      </tr>
+      <tr>
+        <td>First Name</td>
+        <td>{{customer.first_name}}</td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
+        <td>{{customer.last_name}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{customer.email}}</td>
+      </tr>
+      <tr>
+        <td>Created At</td>
+        <td>{{customer.created_at}}</td>
+      </tr>
+      <tr>
+        <td>Bookings</td>
+        <td><a href="#">View</a></td>
+      </tr>
+      <tr>
+        <td>Edit</td>
+        <td><a href="/customers/edit/{{customer.id}}">Edit</a></td>
+      </tr>
+      <tr>
+        <td>Delete</td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
 </section>

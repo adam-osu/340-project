@@ -14,10 +14,12 @@ class CustomersController {
     res.render("customers", { customers });
   }
 
-  show(req, res) {
+  async show(req, res) {
+    const { id } = req.params;
+    const [customer] = await this.customersService.findOne(id);
+
     res.render("customer", {
-      first_name: "John",
-      last_name: "Doe",
+      customer,
     });
   }
 
