@@ -8,6 +8,12 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
 });
 
+/**
+ * From https://github.com/mysqljs/mysql
+ *
+ * Performs a query to check that the db connection
+ * was established
+ */
 pool.query("SELECT 1 + 1 AS solution", function (error, results, fields) {
   if (error) throw error;
   console.log("The solution is: ", results[0].solution);
