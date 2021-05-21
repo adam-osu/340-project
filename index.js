@@ -4,6 +4,12 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const ENV = process.env.NODE_ENV;
+/**
+ * Load env variables
+ * 
+ * Based on docs 
+ * https://www.npmjs.com/package/dotenv
+ */
 require("dotenv").config({
   path: path.resolve(
     process.cwd(),
