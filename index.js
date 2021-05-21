@@ -7,7 +7,7 @@ const ENV = process.env.NODE_ENV;
 require("dotenv").config({
   path: path.resolve(
     process.cwd(),
-    ENV === "development" ? "development.env" : ".env"
+    ENV === "development" ? ".env.development" : ".env"
   ),
 });
 
