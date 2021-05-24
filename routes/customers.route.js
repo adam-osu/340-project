@@ -43,7 +43,7 @@ module.exports = (app) => {
    *
    * Delete customer page
    */
-  app.get("/customers/delete/:id", customersController.delete);
+  app.delete("/customers/delete/:id", customersController.delete);
 
   /**
    * POST /customers
