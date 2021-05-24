@@ -27,16 +27,6 @@ class BookingsController {
     });
   }
 
-  async delete(req, res) {
-    const { id } = req.params;
-    const [[booking], customers] = await this.bookingService.delete({
-      id,
-      withCustomers: true,
-    });
-    
-    res.render("bookings", { bookings });
-  }
-
   _new(req, res) {
     res.render("addBooking", {
       properties: [

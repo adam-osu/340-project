@@ -54,9 +54,6 @@ class BookingModel extends BaseModel {
     return super.create(booking);
   }
 
-  delete(id) {
-    return super.delete(id);
-  }
 }
 
 module.exports = { Booking: new BookingModel() };
