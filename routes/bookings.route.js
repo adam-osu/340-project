@@ -39,6 +39,13 @@ module.exports = (app) => {
   app.get("/bookings/edit/:id", bookingsController.edit);
 
   /**
+   * GET /bookings/delete/:id
+   *
+   * Delete booking page
+   */
+  app.get("/bookings/delete/:id", bookingsController.delete);
+
+  /**
    * PUT /bookings
    *
    * Update booking

@@ -10,6 +10,10 @@ class PropertiesService {
     return await this.propertyModel.findOne(id);
   }
 
+  async delete(id) {
+    return await this.propertyModel.delete(id);
+  }
+
   async create(property) {
     return await this.propertyModel.create(property);
   }

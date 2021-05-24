@@ -23,6 +23,13 @@ class PropertiesController {
     });
   }
 
+  async delete(req, res) {
+    const { id } = req.params;
+    const [property] = await this.properties.delete(id);
+
+    res.render("properties", { properties });
+  }
+
   _new(req, res) {
     res.render("addProperty");
   }

@@ -10,6 +10,10 @@ class CustomersService {
     return await this.customerModel.findOne(id);
   }
 
+  async delete(id) {
+    return await this.customerModel.delete(id);
+  }
+
   async create(customer) {
     return await this.customerModel.create(customer);
   }

@@ -18,6 +18,10 @@ class PropertyModel extends BaseModel {
   create(property) {
     return super.create(property);
   }
+
+  delete(id) {
+    return super.delete(id);
+  }
 }
 
 module.exports = { Property: new PropertyModel() };

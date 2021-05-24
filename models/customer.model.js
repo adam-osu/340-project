@@ -18,6 +18,10 @@ class CustomerModel extends BaseModel {
   create(customer) {
     return super.create(customer);
   }
+
+  delete(id) {
+    return super.delete(id);
+  }
 }
 
 module.exports = { Customer: new CustomerModel() };

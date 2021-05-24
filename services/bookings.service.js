@@ -10,6 +10,10 @@ class BookingsService {
     return await this.bookingModel.findOne({id, withCustomers});
   }
 
+  async delete({id, withCustomers = false}) {
+    return await this.bookingModel.delete({id, withCustomers});
+  }
+
   async create(booking) {
     return await this.bookingModel.create(booking);
   }

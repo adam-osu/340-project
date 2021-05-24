@@ -23,6 +23,13 @@ class CustomersController {
     });
   }
 
+  async delete(req, res) {
+    const { id } = req.params;
+    const [customer] = await this.customersService.delete(id);
+
+    res.render("customers", { customers });
+  }
+
   _new(req, res) {
     res.render("addCustomer");
   }

@@ -45,6 +45,21 @@ class BaseModel {
       });
     });
   }
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      this.pool.query(
+        `DELETE FROM ${this.name} WHERE id = ?;`,
+        [id],
+        (err, rows) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(rows);
+        }
+      );
+    })
+  }
 }
 
 module.exports = { BaseModel };
