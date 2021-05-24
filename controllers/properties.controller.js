@@ -25,9 +25,9 @@ class PropertiesController {
 
   async delete(req, res) {
     const { id } = req.params;
-    const [property] = await this.properties.delete(id);
+    await this.properties.delete(id);
 
-    res.render("properties", { properties });
+    res.redirect("/properties");
   }
 
   _new(req, res) {
