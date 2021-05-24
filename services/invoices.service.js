@@ -10,10 +10,6 @@ class InvoicesService {
     return await this.invoiceModel.findOne(id);
   }
 
-  async delete(id) {
-    return await this.invoiceModel.delete(id);
-  }
-
   async create(invoice) {
     return await this.invoiceModel.create(invoice);
   }

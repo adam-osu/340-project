@@ -19,9 +19,6 @@ class InvoiceModel extends BaseModel {
     return super.create(invoice);
   }
 
-  delete(id) {
-    return super.delete(id);
-  }
 }
 
 module.exports = { Invoice: new InvoiceModel() };

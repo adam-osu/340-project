@@ -25,13 +25,6 @@ module.exports = (app) => {
   app.get("/invoices/edit/:id", invoicesController.edit);
 
   /**
-   * GET /invoices/delete/:id
-   * 
-   * Delete invoice page
-   */
-  app.get("/invoices/delete/:id", invoicesController.delete);
-  
-  /**
    * POST /invoices
    * 
    * Update invoices page

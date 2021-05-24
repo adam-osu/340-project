@@ -22,13 +22,6 @@ class InvoicesController {
     });
   }
 
-  async delete(req, res) {
-    const { id } = req.params;
-    const [invoice] = await this.invoicesService.delete(id);
-
-    res.render("invoices", { invoices });
-  }
-
   edit(req, res) {
     res.render("editInvoice", {
       // test data
