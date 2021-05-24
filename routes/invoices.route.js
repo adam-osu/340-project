@@ -23,7 +23,7 @@ module.exports = (app) => {
    * Edit invoice page
    */
   app.get("/invoices/edit/:id", invoicesController.edit);
-  
+
   /**
    * POST /invoices
    * 

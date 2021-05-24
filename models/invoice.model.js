@@ -18,6 +18,7 @@ class InvoiceModel extends BaseModel {
   create(invoice) {
     return super.create(invoice);
   }
+
 }
 
 module.exports = { Invoice: new InvoiceModel() };

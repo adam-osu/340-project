@@ -39,6 +39,13 @@ module.exports = (app) => {
   app.get("/customers/edit/:id", customersController.edit);
 
   /**
+   * DELETE /customers/delete/:id
+   *
+   * Delete customer page
+   */
+  app.delete("/customers/delete/:id", customersController.delete);
+
+  /**
    * POST /customers
    *
    * Update customer

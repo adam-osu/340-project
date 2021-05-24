@@ -53,6 +53,7 @@ class BookingModel extends BaseModel {
   create(booking) {
     return super.create(booking);
   }
+
 }
 
 module.exports = { Booking: new BookingModel() };

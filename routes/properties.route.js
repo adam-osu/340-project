@@ -41,6 +41,13 @@ module.exports = (app) => {
   app.get("/properties/edit/:id", propertiesController.edit);
 
   /**
+   * DELETE /properties/delete/:id
+   *
+   * Delete properties page
+   */
+  app.delete("/properties/delete/:id", propertiesController.delete);
+
+  /**
    * PUT /properties/:id
    *
    * Update property
