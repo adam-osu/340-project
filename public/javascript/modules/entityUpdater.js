@@ -1,6 +1,5 @@
 class EntityUpdater {
-  constructor({ entityId, inputIds, updateUrl }) {
-    this.entityId = entityId;
+  constructor({ inputIds, updateUrl }) {
     this.inputIds = inputIds;
     this.updateUrl = updateUrl;
     this.updatePayload = null;
