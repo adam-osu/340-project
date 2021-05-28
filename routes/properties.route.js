@@ -6,6 +6,13 @@ const propertiesController = new PropertiesController();
 
 module.exports = (app) => {
   /**
+   * GET /
+   *
+   * All properties page (home page)
+   */
+  app.get("/", propertiesController.index);
+
+  /**
    * GET /properties
    *
    * All properties page
