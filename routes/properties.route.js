@@ -52,5 +52,5 @@ module.exports = (app) => {
    *
    * Update property
    */
-  app.put("/properties/:id");
+  app.put("/properties/:id", propertiesController.update);
 };

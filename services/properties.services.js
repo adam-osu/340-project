@@ -17,6 +17,10 @@ class PropertiesService {
   async create(property) {
     return await this.propertyModel.create(property);
   }
+
+  async update({id, updates}) {
+    return await this.propertyModel.update({id, updates})
+  }
 }
 
 module.exports = { PropertiesService };

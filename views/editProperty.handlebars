@@ -1,6 +1,8 @@
 <header>
-    <h1>Edit Property {{ propertyName }}</h1>
+    <h1>Edit Property {{ property.building_name }}</h1>
 </header>
 <section>
-    {{> "propertyForms/editPropertyForm" }}
+    {{> "propertyForms/editPropertyForm" this }}
 </section>
+<script src="/javascript/editProperty.js"></script>
+<script src="/javascript/modules/entityUpdater.js"></script>

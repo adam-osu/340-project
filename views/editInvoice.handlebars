@@ -1,6 +1,8 @@
 <header>
-    <h1>Edit Invoice {{ invoiceId }}</h1>
+    <h1>Edit Invoice</h1>
 </header>
 <section>
-    {{> "invoiceForms/editInvoiceForm" }}
+    {{> "invoiceForms/editInvoiceForm" invoice }}
 </section>
+<script src="/javascript/modules/entityUpdater.js"></script>
+<script src="/javascript/editInvoice.js"></script>

@@ -2,6 +2,7 @@ const { PropertiesService } = require("../services/properties.services");
 const autoBind = require("auto-bind");
 
 const { Property } = require("../models/property.model");
+const { cleanPick } = require("../utilities/cleanPick");
 
 class PropertiesController {
   constructor() {
@@ -45,22 +46,34 @@ class PropertiesController {
       created_at: new Date(),
     });
 
-    res.redirect('/properties')
+    res.redirect("/properties");
   }
 
-  edit(req, res) {
-    res.render("editProperty", {
-      // test data
-      propertyName: "Test",
-      address: "123 Test Road",
-      rate: 40,
-      maxOccupancy: 12,
+  async edit(req, res) {
+    const { id } = req.params;
+    const [property] = await this.properties.findOne(id);
+
+    console.log(property)
+
+    res.render("editProperty", { property });
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    const cleanedUpdates = cleanPick(req.body, [
+      "building_name",
+      "address",
+      "rate",
+      "max_occupancy",
+    ]);
+
+    await this.properties.update({
+      id,
+      updates: cleanedUpdates,
     });
-  }
 
-  update(req, res) {
-    // update
-    res.status(201).send({ message: "Updated!" });
+    res.redirect('/properties');
   }
 }
 

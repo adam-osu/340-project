@@ -46,6 +46,21 @@ class BaseModel {
     });
   }
 
+  update({ id, updates }) {
+    return new Promise((resolve, reject) => {
+      this.pool.query(
+        `UPDATE ${this.name} SET ? WHERE id = ?;`,
+        [updates, id],
+        (err, rows) => {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(rows);
+        }
+      );
+    });
+  }
+
   delete(id) {
     return new Promise((resolve, reject) => {
       this.pool.query(
@@ -58,7 +73,7 @@ class BaseModel {
           return resolve(rows);
         }
       );
-    })
+    });
   }
 }
 
