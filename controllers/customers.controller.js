@@ -64,7 +64,7 @@ class CustomersController {
 
     await this.customersService.update({ id, updates: cleanedCustomer });
 
-    res.status(201).send({ message: "Updated!" });
+    res.redirect('/customers');
   }
 }
 
