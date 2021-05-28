@@ -49,14 +49,13 @@ class PropertiesController {
     res.redirect("/properties");
   }
 
-  edit(req, res) {
-    res.render("editProperty", {
-      // test data
-      propertyName: "Test",
-      address: "123 Test Road",
-      rate: 40,
-      maxOccupancy: 12,
-    });
+  async edit(req, res) {
+    const { id } = req.params;
+    const [property] = await this.properties.findOne(id);
+
+    console.log(property)
+
+    res.render("editProperty", { property });
   }
 
   async update(req, res) {
