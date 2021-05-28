@@ -73,7 +73,7 @@ class PropertiesController {
       updates: cleanedUpdates,
     });
 
-    res.status(201).send({ message: "Updated!" });
+    res.redirect('/properties');
   }
 }
 
