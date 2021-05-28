@@ -31,6 +31,8 @@ class EntityUpdater {
       body: JSON.stringify(this.updatePayload),
     })
       .then((res) => {
+        // Referenced from here https://stackoverflow.com/questions/39735496/redirect-after-a-fetch-post-call
+        // fetch has a response object that contains a url if the server indicated to redirect.
         if (res.redirected) {
           window.location.href = res.url;
         }
