@@ -50,5 +50,5 @@ module.exports = (app) => {
    *
    * Update customer
    */
-  app.put("/customers", customersController.update);
+  app.put("/customers/:id", customersController.update);
 };

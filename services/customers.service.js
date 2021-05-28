@@ -17,6 +17,10 @@ class CustomersService {
   async create(customer) {
     return await this.customerModel.create(customer);
   }
+
+  async update({ id, updates }) {
+    return await this.customerModel.update({ id, updates });
+  }
 }
 
 module.exports = { CustomersService };
