@@ -2,6 +2,7 @@ const { InvoicesService } = require("../services/invoices.service");
 const autoBind = require("auto-bind");
 
 const { Invoice } = require("../models/invoice.model");
+const { cleanPick } = require("../utilities/cleanPick");
 
 class InvoicesController {
   constructor() {
@@ -22,17 +23,20 @@ class InvoicesController {
     });
   }
 
-  edit(req, res) {
-    res.render("editInvoice", {
-      // test data
-      invoiceId: 1234,
-      totalDue: 3000,
-      amountPaid: 1500,
-    });
+  async edit(req, res) {
+    const { id } = req.params;
+    const [invoice] = await this.invoicesService.findOne(id);
+
+    res.render("editInvoice", { invoice });
   }
 
-  update(req, res) {
-    res.status(201).send({ message: "Updated!" });
+  async update(req, res) {
+    const { id } = req.params;
+    const cleanedUpdates = cleanPick(req.body, ["total_due", "amount_paid"]);
+
+    await this.invoicesService.update({ id, updates: cleanedUpdates });
+
+    res.redirect("/invoices");
   }
 }
 

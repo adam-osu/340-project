@@ -13,6 +13,10 @@ class InvoicesService {
   async create(invoice) {
     return await this.invoiceModel.create(invoice);
   }
+
+  async update({ id, updates }) {
+    return await this.invoiceModel.update({ id, updates });
+  }
 }
 
 module.exports = { InvoicesService };

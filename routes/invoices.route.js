@@ -29,5 +29,5 @@ module.exports = (app) => {
    * 
    * Update invoices page
    */
-  app.put("/invoices", invoicesController.update);
+  app.put("/invoices/:id", invoicesController.update);
 }
