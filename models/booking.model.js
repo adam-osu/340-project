@@ -49,11 +49,6 @@ class BookingModel extends BaseModel {
 
     return bookingPromise;
   }
-
-  create(booking) {
-    return super.create(booking);
-  }
-
 }
 
 module.exports = { Booking: new BookingModel() };
