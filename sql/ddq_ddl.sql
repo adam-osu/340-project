@@ -22,7 +22,7 @@ CREATE TABLE bookings (
     start_date DATETIME NOT NULL,
     end_date DATETIME NOT NULL,
     property_id INT NOT NULL,
-    CONSTRAINT `fk_property_id` FOREIGN KEY (property_id) REFERENCES properties (id),
+    CONSTRAINT `fk_property_id` FOREIGN KEY (property_id) REFERENCES properties (id) ON DELETE RESTRICT,
     created_at DATETIME NOT NULL
 ) ENGINE=InnoDB;
 
@@ -39,8 +39,8 @@ CREATE TABLE bookings_customers  (
   booking_id int(11) NOT NULL,
   created_at datetime NOT NULL,
   PRIMARY KEY (customer_id, booking_id) USING BTREE,
-  CONSTRAINT bookings_customers_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT bookings_customers_ibfk_2 FOREIGN KEY (booking_id) REFERENCES bookings (id) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT bookings_customers_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT bookings_customers_ibfk_2 FOREIGN KEY (booking_id) REFERENCES bookings (id) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB ;
 
 CREATE TABLE invoices (
