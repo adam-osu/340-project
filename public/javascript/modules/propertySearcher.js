@@ -42,7 +42,11 @@ class PropertySearcher {
       row.appendChild(maxOccupancyCell);
       row.appendChild(addCell);
 
-      addButton.onclick = this.addButtonHandler.bind(null, row);
+      addButton.onclick = this.addButtonHandler.bind(
+        null,
+        row,
+        property.max_occupancy
+      );
 
       return row;
     });
