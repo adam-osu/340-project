@@ -27,6 +27,13 @@ module.exports = (app) => {
   app.get("/properties/new", propertiesController._new);
 
   /**
+   * GET /properties/search
+   *
+   * Display search results table
+   */
+  app.get("/properties/search", propertiesController.search);
+
+  /**
    * GET /properties/:id
    *
    * Single property page
@@ -39,13 +46,6 @@ module.exports = (app) => {
    * Create new property
    */
   app.post("/properties", propertiesController.create);
-
-  /**
-   * GET /properties/search
-   *
-   * Display search results table
-   */
-  app.get("/properties/search", propertiesController.searchShow);
 
   /**
    * GET /properties/edit/:id

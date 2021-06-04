@@ -10,7 +10,7 @@ class PropertiesController {
     autoBind(this);
   }
 
-  async searchShow(req, res) {
+  async search(req, res) {
     const { building_name } = req.query;
     const [properties] = await this.propertiesService.searchProperty( building_name );
 
