@@ -10,6 +10,13 @@ class PropertiesController {
     autoBind(this);
   }
 
+  async searchShow(req, res) {
+    const { building_name } = req.query;
+    const [properties] = await this.propertiesService.searchProperty( building_name );
+
+    res.status(200).send({properties});
+  }
+
   async index(req, res) {
     const properties = await this.properties.findAll();
     res.render("properties", { properties });
