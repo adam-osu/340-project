@@ -4,8 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("submit", (e) => {
       e.preventDefault();
 
+      const addButtonHandler = (propertyEl) => {
+        const property = propertyEl.cloneNode(true);
+        const currentProperties = document.querySelector(
+          "#current-property tbody"
+        );
+        currentProperties.innerHTML = "";
+        currentProperties.appendChild(property);
+        // remove add button
+        const appendedProperty = currentProperties.children[0]
+        appendedProperty.removeChild(appendedProperty.lastChild);
+      };
+
       new PropertySearcher({
-        addButtonHandler: () => console.log("coolio"),
+        addButtonHandler,
       }).search();
     });
 
