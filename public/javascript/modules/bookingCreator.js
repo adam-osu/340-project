@@ -11,6 +11,8 @@ class BookingCreator {
     const property_id = document.querySelector(
       "#current-property tr td input"
     ).value; // only 1 property per booking
+    // https://stackoverflow.com/questions/2600343/why-does-document-queryselectorall-return-a-staticnodelist-rather-than-a-real-ar
+    // NodeLists can't be iterated over with .map but they can be spread into (turned into) an array and have map called on them
     const customer_ids = [
       ...document.querySelectorAll("#current-customers tr td input"),
     ].map((node) => node.value);
