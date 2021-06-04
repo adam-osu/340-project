@@ -44,4 +44,18 @@ module.exports = (app) => {
    * Update booking
    */
   app.put("/bookings", bookingsController.update);
+
+  /**
+   * DEL /bookings/customer
+   *
+   * Removes a customer from a booking
+   */
+  app.delete("/bookings/customer", bookingsController.removeCustomer);
+
+  /**
+   * POST /bookings/customer
+   *
+   * Adds a customer to a booking
+   */
+  app.post("/bookings/customer", bookingsController.addCustomers);
 };
