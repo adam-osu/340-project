@@ -13,6 +13,14 @@ const findOne = `
 const findBookingCustomers = `
   SELECT  c.id, c.first_name, c.last_name FROM bookings_customers bc
   JOIN customers c ON bc.customer_id = c.id WHERE bc.booking_id = ?;
-`
+`;
 
-module.exports = { findAll, findOne, findBookingCustomers };
+const addCustomers = `
+  INSERT INTO bookings_customers (customer_id, booking_id, created_at) VALUES ?;
+`;
+
+const removeCustomer = `
+  DELETE FROM bookings_customers WHERE customer_id = ? AND booking_id = ?;
+`;
+
+module.exports = { findAll, findOne, findBookingCustomers, addCustomers, removeCustomer };
