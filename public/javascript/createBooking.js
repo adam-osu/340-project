@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
             console.log(customerEl.firstChild.firstChild.value);
             if (currentCustomerId === targetCustomerId) {
-              console.log(true);
               customerEl.remove();
             }
           });

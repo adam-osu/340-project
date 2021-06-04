@@ -1,21 +1,24 @@
 class BookingCreator {
   constructor() {
     this.payload = null;
-
-    this._initialize();
   }
 
   _initialize() {
     const start_date = document.getElementById("start_date").value;
     const end_date = document.getElementById("end_date").value;
     const property_id = document.querySelector(
-      "#current-property tr td input"
+      "#current-property tbody tr input"
     ).value; // only 1 property per booking
     // https://stackoverflow.com/questions/2600343/why-does-document-queryselectorall-return-a-staticnodelist-rather-than-a-real-ar
     // NodeLists can't be iterated over with .map but they can be spread into (turned into) an array and have map called on them
     const customer_ids = [
-      ...document.querySelectorAll("#current-customers tr td input"),
+      ...document.querySelectorAll("#current-customers tbody tr input"),
     ].map((node) => node.value);
+
+    if (!customer_ids.length || !property_id || !start_date || !end_date) {
+      console.log('Missing parameters')
+      return
+    } 
 
     this.payload = {
       start_date,
@@ -23,11 +26,15 @@ class BookingCreator {
       property_id,
       customer_ids,
     };
-
-    console.log(this.payload);
   }
 
   create() {
+    this._initialize();
+
+    if (!this.payload) {
+      return
+    }
+
     fetch("/bookings/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
