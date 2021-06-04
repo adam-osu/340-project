@@ -12,9 +12,9 @@ class CustomerModel extends BaseModel {
     autoBind(this);
   }
 
-  searchCustomer() {
+  searchCustomer({first_name, last_name}) {
     return new Promise((resolve, reject) => {
-      this.pool.query(findOne, (err, rows) => {
+      this.pool.query(searchCustomer, [first_name, last_name], (err, rows) => {
         if (err) {
           return reject(err);
         }
