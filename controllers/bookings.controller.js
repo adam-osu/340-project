@@ -2,6 +2,7 @@ const { BookingsService } = require("../services/bookings.service");
 const autoBind = require("auto-bind");
 
 const { Booking } = require("../models/booking.model");
+const { cleanPick } = require("../utilities/cleanPick");
 
 class BookingsController {
   constructor() {
@@ -36,8 +37,35 @@ class BookingsController {
     });
   }
 
-  create(req, res) {
-    res.status(200).send(req.body);
+  async create(req, res) {
+    const booking = cleanPick(req.body, [
+      "start_date",
+      "end_date",
+      "property_id",
+    ]);
+    booking.created_at = new Date();
+
+    const customers = cleanPick(req.body, ["customer_ids"]);
+
+    await this.bookingService.create({ booking, customers });
+
+    res.redirect("/bookings");
+  }
+
+  async removeCustomer(req, res) {
+    const { booking_id, customer_id } = req.query;
+
+    await this.bookingService.removeCustomer({ booking_id, customer_id });
+
+    res.status(201).send({ message: "Customer removed from booking" });
+  }
+
+  async addCustomers(req, res) {
+    const { customer_ids, booking_id } = req.body;
+
+    await this.bookingService.addCustomers({ customer_ids, booking_id });
+
+    res.status(201).send({ message: "Customer added to booking" });
   }
 
   edit(req, res) {
