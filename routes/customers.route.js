@@ -32,6 +32,13 @@ module.exports = (app) => {
   app.post("/customers", customersController.create);
 
   /**
+   * GET /customers/search
+   *
+   * Display search results table
+   */
+  app.get("/customers/search", customersController.searchShow);
+
+  /**
    * GET /customers/edit/:id
    *
    * Edit customer page

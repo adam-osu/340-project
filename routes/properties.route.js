@@ -41,6 +41,13 @@ module.exports = (app) => {
   app.post("/properties", propertiesController.create);
 
   /**
+   * GET /properties/search
+   *
+   * Display search results table
+   */
+  app.get("/properties/search", propertiesController.searchShow);
+
+  /**
    * GET /properties/edit/:id
    *
    * Edit properties page
