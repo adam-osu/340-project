@@ -65,11 +65,16 @@ class BookingModel extends BaseModel {
   }
 
   addCustomers({ customers, booking_id }) {
+    if(!customers.customer_ids) {
+      return
+    }
+
     const data = customers.customer_ids.map((customer_id) => [
       customer_id,
       booking_id,
       new Date(),
     ]);
+
 
     return new Promise((resolve, reject) => {
       this.pool.query(addCustomers, [data], (err, rows) => {

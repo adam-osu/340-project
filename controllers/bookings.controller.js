@@ -53,7 +53,7 @@ class BookingsController {
   }
 
   async removeCustomer(req, res) {
-    const { booking_id, customer_id } = req.query;
+    const { booking_id, customer_id } = req.body;
 
     await this.bookingService.removeCustomer({ booking_id, customer_id });
 
@@ -80,8 +80,18 @@ class BookingsController {
     res.render("editBooking", { booking, customers, property });
   }
 
-  update(req, res) {
-    res.status(201).send({ message: "Updated!" });
+  async update(req, res) {
+    console.log(req.body)
+    const bookingUpdates = cleanPick(req.body, [
+      "id",
+      "property_id",
+      "start_date",
+      "end_date",
+    ]);
+
+    await this.bookingService.update({id: bookingUpdates.id, updates: bookingUpdates});
+
+    res.redirect(`/bookings/${bookingUpdates.id}`);
   }
 }
 

@@ -32,6 +32,10 @@ class BookingsService {
   async removeCustomer({ booking_id, customer_id }) {
     return await this.bookingModel.removeCustomer({ booking_id, customer_id });
   }
+
+  async update({id, updates}){
+    return await this.bookingModel.update({id, updates})
+  }
 }
 
 module.exports = { BookingsService };

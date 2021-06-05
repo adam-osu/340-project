@@ -7,12 +7,12 @@ class CustomerSearcher {
     // stub
     const customers = [
       {
-        id: "1",
+        id: "3",
         first_name: "Adam",
         last_name: "Okasha",
         email: "kasho.dev@gmail.com",
       },
-      { id: "2", first_name: "Hala", last_name: "B", email: "hala@mail.com" },
+      { id: "4", first_name: "Hala", last_name: "B", email: "hala@mail.com" },
     ];
 
     const resultsTable = document.querySelector("#customer-results tbody");
