@@ -11,8 +11,13 @@ const findOne = `
 `;
 
 const findBookingCustomers = `
-  SELECT  c.id, c.first_name, c.last_name FROM bookings_customers bc
+  SELECT  c.id, c.first_name, c.last_name, c.email FROM bookings_customers bc
   JOIN customers c ON bc.customer_id = c.id WHERE bc.booking_id = ?;
+`;
+
+const findBookingProperty = `
+  SELECT p.id, p.building_name, p.max_occupancy FROM bookings b
+  JOIN properties p ON b.property_id = p.id WHERE b.id = ?
 `;
 
 const addCustomers = `
@@ -23,4 +28,11 @@ const removeCustomer = `
   DELETE FROM bookings_customers WHERE customer_id = ? AND booking_id = ?;
 `;
 
-module.exports = { findAll, findOne, findBookingCustomers, addCustomers, removeCustomer };
+module.exports = {
+  findAll,
+  findOne,
+  findBookingCustomers,
+  addCustomers,
+  removeCustomer,
+  findBookingProperty,
+};

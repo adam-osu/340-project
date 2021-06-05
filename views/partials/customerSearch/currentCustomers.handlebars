@@ -1,18 +1,21 @@
 <div id="current-customers" class="current-customers">
+  <input type="hidden" id="current-property-max-occupancy" value="0" />
   <table>
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th></th>
+    </thead>
+    {{#each this}}
+      <tr>
+        <td style="display: none"><input type="hidden" value {{this.id}} /></td>
+        <td>{{this.first_name}} {{this.last_name}}</td>
+        <td>{{this.email}}</td>
+        <td><button class="btn--small">Remove</button></td>
+      </tr>
+    {{/each}}
     <tbody>
-      <tr>
-        <td><input type="hidden" value="1" /></td>
-        <td>John Doe</td>
-        <td><a href="#">jdoe@yo.com</a></td>
-        <td><a href="#">Remove</a></td>
-      </tr>
-      <tr>
-        <td><input type="hidden" value="2" /></td>
-        <td>Jane Doe</td>
-        <td><a href="#">jane@do.com</a></td>
-        <td><a href="#">Remove</a></td>
-      </tr>
+
     </tbody>
   </table>
 </div>

@@ -22,9 +22,9 @@
           <tr>
             <td><a href="/bookings/{{this.id}}">{{this.id}}</a></td>
             <td><a href="/properties/{{this.property_id}}">{{this.building_name}}</a></td>
-            <td>{{this.start_date}}</td>
-            <td>{{this.end_date}}</td>
-            <td>{{this.created_at}}</td>
+            <td>{{formatDateforTable this.start_date}}</td>
+            <td>{{formatDateforTable this.end_date}}</td>
+            <td>{{formatCreatedAtDate this.created_at}}</td>
             <td><a href="/bookings/edit/{{this.id}}">Edit</a></td>
             <td><a href="#">Delete</a></td>
           </tr>

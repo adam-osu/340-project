@@ -1,16 +1,17 @@
 {{!-- Couldn't find a better booking identifier - have to use base id --}}
 <header>
-    <h1>Edit Booking {{ start_date }}</h1>
+    <h1>Edit Booking {{formatDateforTable start_date }}</h1>
 </header>
 <section>
     <div class="add-booking__search-forms">
-        {{> "propertySearch/propertySearch" }}
-        {{> "customerSearch/customerSearch" }}
+        {{> "propertySearch/propertySearch" this }}
+        {{!-- {{> "customerSearch/customerSearch" this }} --}}
     </div>
     <div>
-        {{> "bookingForms/editBookingForm" }}
+        {{> "bookingForms/editBookingForm" this }}
     </div>
 </section>
 <script src="/javascript/modules/propertySearcher.js"></script>
 <script src="/javascript/modules/customerSearcher.js"></script>
+<script src="/javascript/modules/bookingUpdater.js"></script>
 <script src="/javascript/editBooking.js"></script>

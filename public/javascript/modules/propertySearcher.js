@@ -33,15 +33,20 @@ class PropertySearcher {
       inputCell.appendChild(hiddenInput);
       inputCell.hidden = true;
 
-      addButton.onclick = this.addButtonHandler;
       addButton.className = "btn--small btn--link";
       addButton.innerText = "Add";
       addCell.appendChild(addButton);
 
+      row.appendChild(inputCell);
       row.appendChild(nameCell);
       row.appendChild(maxOccupancyCell);
       row.appendChild(addCell);
-      row.appendChild(inputCell);
+
+      addButton.onclick = this.addButtonHandler.bind(
+        null,
+        row,
+        property.max_occupancy
+      );
 
       return row;
     });

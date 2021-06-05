@@ -8,6 +8,7 @@ const {
   findBookingCustomers,
   addCustomers,
   removeCustomer,
+  findBookingProperty,
 } = require("./queries/bookings.queries");
 class BookingModel extends BaseModel {
   constructor() {
@@ -52,12 +53,28 @@ class BookingModel extends BaseModel {
     return bookingPromise;
   }
 
+  findBookingProperty(id) {
+    return new Promise((resolve, reject) => {
+      this.pool.query(findBookingProperty, [id], (err, rows) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(rows);
+      });
+    });
+  }
+
   addCustomers({ customers, booking_id }) {
+    if(!customers.customer_ids) {
+      return
+    }
+
     const data = customers.customer_ids.map((customer_id) => [
       customer_id,
       booking_id,
       new Date(),
     ]);
+
 
     return new Promise((resolve, reject) => {
       this.pool.query(addCustomers, [data], (err, rows) => {
@@ -70,7 +87,6 @@ class BookingModel extends BaseModel {
   }
 
   removeCustomer({ customer_id, booking_id }) {
-    console.log({customer_id, booking_id})
     return new Promise((resolve, reject) => {
       this.pool.query(
         removeCustomer,

@@ -24,6 +24,25 @@ app.engine(
   "handlebars",
   exphbs({
     defaultLayout: "main",
+    helpers: {
+      formatDateForCalendarInput: (rawDate) => {
+        const parsedDate = new Date(rawDate)
+        const year = parsedDate.getFullYear();
+        const month = parsedDate.getMonth();
+        const day = parsedDate.getDay();
+
+        const paddedMonth = month < 10 ? `0${month}` : month
+        const paddedDay = day < 10 ? `0${day}` : day
+
+        return `${year}-${paddedMonth}-${paddedDay}`
+      },
+      formatDateforTable: (rawDate) => {
+        return new Date(rawDate).toDateString()
+      },
+      formatCreatedAtDate: (rawDate) => {
+        return new Date(rawDate).toISOString()
+      }
+    }
   })
 );
 
