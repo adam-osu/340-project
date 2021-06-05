@@ -26,10 +26,12 @@
             <td>{{this.email}}</td>
             <td>{{formatCreatedAtDate this.created_at}}</td>
             <td><a href="/customers/edit/{{this.id}}">Edit</a></td>
-            <td><a href="/customers/delete/{{this.id}}">Delete</a></td>
+            <td><button class="btn--small btn--tsp">Delete</button></td>
           </tr>
         {{/each}}
       </tbody>
     </table>
   </div>
 </section>
+<script src="/javascript/modules/customerDeleter.js"></script>
+<script src="/javascript/customers.js"></script>
