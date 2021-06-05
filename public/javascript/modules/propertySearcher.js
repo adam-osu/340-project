@@ -4,57 +4,57 @@ class PropertySearcher {
   }
 
   search() {
-    // stub
-    const properties = [
-      {
-        id: "1",
-        building_name: "Radiance",
-        max_occupancy: 3,
-      },
-      { id: "2", building_name: "G Tower 2202", max_occupancy: 2 },
-    ];
+    const searchTerm = document.getElementById("property-search").value;
 
-    const resultsTable = document.querySelector("#property-results tbody");
+    const url = `/properties/search?building_name=${searchTerm}`;
 
-    const propertyRows = properties.map((property) => {
-      const row = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const maxOccupancyCell = document.createElement("td");
-      const inputCell = document.createElement("tr");
-      const hiddenInput = document.createElement("input");
-      const addCell = document.createElement("tr");
-      const addButton = document.createElement("button");
+    fetch(url, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((properties) => {
+        const resultsTable = document.querySelector("#property-results tbody");
 
-      nameCell.innerText = `${property.building_name}`;
-      maxOccupancyCell.innerText = `${property.max_occupancy}`;
+        const propertyRows = properties.map((property) => {
+          const row = document.createElement("tr");
+          const nameCell = document.createElement("td");
+          const maxOccupancyCell = document.createElement("td");
+          const inputCell = document.createElement("tr");
+          const hiddenInput = document.createElement("input");
+          const addCell = document.createElement("tr");
+          const addButton = document.createElement("button");
 
-      hiddenInput.value = property.id;
-      hiddenInput.type = "hidden";
-      inputCell.appendChild(hiddenInput);
-      inputCell.hidden = true;
+          nameCell.innerText = `${property.building_name}`;
+          maxOccupancyCell.innerText = `${property.max_occupancy}`;
 
-      addButton.className = "btn--small btn--link";
-      addButton.innerText = "Add";
-      addCell.appendChild(addButton);
+          hiddenInput.value = property.id;
+          hiddenInput.type = "hidden";
+          inputCell.appendChild(hiddenInput);
+          inputCell.hidden = true;
 
-      row.appendChild(inputCell);
-      row.appendChild(nameCell);
-      row.appendChild(maxOccupancyCell);
-      row.appendChild(addCell);
+          addButton.className = "btn--small btn--link";
+          addButton.innerText = "Add";
+          addCell.appendChild(addButton);
 
-      addButton.onclick = this.addButtonHandler.bind(
-        null,
-        row,
-        property.max_occupancy
-      );
+          row.appendChild(inputCell);
+          row.appendChild(nameCell);
+          row.appendChild(maxOccupancyCell);
+          row.appendChild(addCell);
 
-      return row;
-    });
+          addButton.onclick = this.addButtonHandler.bind(
+            null,
+            row,
+            property.max_occupancy
+          );
 
-    resultsTable.innerHTML = "";
+          return row;
+        });
 
-    propertyRows.forEach((propertyRow) => {
-      resultsTable.appendChild(propertyRow);
-    });
+        resultsTable.innerHTML = "";
+
+        propertyRows.forEach((propertyRow) => {
+          resultsTable.appendChild(propertyRow);
+        });
+      });
   }
 }

@@ -4,53 +4,67 @@ class CustomerSearcher {
   }
 
   search() {
-    // stub
-    const customers = [
-      {
-        id: "3",
-        first_name: "Adam",
-        last_name: "Okasha",
-        email: "kasho.dev@gmail.com",
-      },
-      { id: "4", first_name: "Hala", last_name: "B", email: "hala@mail.com" },
-    ];
+    const searchTerms = document
+      .getElementById("customer-search")
+      .value.split(" ");
 
-    const resultsTable = document.querySelector("#customer-results tbody");
+    let url;
 
-    const customerRows = customers.map((customer) => {
-      const row = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const emailCell = document.createElement("td");
-      const inputCell = document.createElement("tr");
-      const hiddenInput = document.createElement("input");
-      const addCell = document.createElement("tr");
-      const addButton = document.createElement("button");
+    if (searchTerms.length === 0) {
+      return;
+    } else if (searchTerms.length === 1) {
+      url = `/customers/search?first_name=${searchTerms[0]}`;
+    } else if (searchTerms.length >= 2) {
+      url = `/customers/search?first_name=${searchTerms[0]}&last_name=${searchTerms[1]}`;
+    }
 
-      nameCell.innerText = `${customer.first_name} ${customer.last_name}`;
-      emailCell.innerText = `${customer.email}`;
+    fetch(url, {
+      method: "GET",
+    })
+      .then((res) => {
+        res.json().then((customers) => {
 
-      hiddenInput.value = customer.id;
-      hiddenInput.type = "hidden";
-      inputCell.appendChild(hiddenInput);
-      inputCell.hidden = true;
-      addButton.className = "btn--small btn--link";
-      addButton.innerText = "Add";
-      addCell.appendChild(addButton);
+          const resultsTable = document.querySelector(
+            "#customer-results tbody"
+          );
 
-      row.appendChild(inputCell);
-      row.appendChild(nameCell);
-      row.appendChild(emailCell);
-      row.appendChild(addCell);
+          const customerRows = customers.map((customer) => {
+            const row = document.createElement("tr");
+            const nameCell = document.createElement("td");
+            const emailCell = document.createElement("td");
+            const inputCell = document.createElement("tr");
+            const hiddenInput = document.createElement("input");
+            const addCell = document.createElement("tr");
+            const addButton = document.createElement("button");
 
-      addButton.onclick = this.addButtonHandler.bind(null, row);
+            nameCell.innerText = `${customer.first_name} ${customer.last_name}`;
+            emailCell.innerText = `${customer.email}`;
 
-      return row;
-    });
+            hiddenInput.value = customer.id;
+            hiddenInput.type = "hidden";
+            inputCell.appendChild(hiddenInput);
+            inputCell.hidden = true;
+            addButton.className = "btn--small btn--link";
+            addButton.innerText = "Add";
+            addCell.appendChild(addButton);
 
-    resultsTable.innerHTML = "";
+            row.appendChild(inputCell);
+            row.appendChild(nameCell);
+            row.appendChild(emailCell);
+            row.appendChild(addCell);
 
-    customerRows.forEach((customerRow) => {
-      resultsTable.appendChild(customerRow);
-    });
+            addButton.onclick = this.addButtonHandler.bind(null, row);
+
+            return row;
+          });
+
+          resultsTable.innerHTML = "";
+
+          customerRows.forEach((customerRow) => {
+            resultsTable.appendChild(customerRow);
+          });
+        });
+      })
+      .catch((e) => console.error(e));
   }
 }
