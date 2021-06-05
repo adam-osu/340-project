@@ -7,7 +7,11 @@
       <th></th>
     </thead>
     <tbody>
-      <td>None</td>
+      {{#if this}}
+        <td style="display: none"><input type="hidden" name="" value="{{this.id}}"></td>
+        <td>{{this.building_name}}</td>
+        <td>{{this.max_occupancy}}</td>
+      {{/if}}
     </tbody>
   </table>
 </div>

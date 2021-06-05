@@ -2,5 +2,6 @@
     <h3>3. Edit booking details</h3>
 </div>
 <form id="edit-booking">
-    {{> bookingForms/bookingFields }}
+    <input type="hidden" value="{{ this.booking.id }}" id="booking-id">
+    {{> bookingForms/bookingFields this.booking }}
 </form>

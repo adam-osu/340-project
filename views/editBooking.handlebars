@@ -4,11 +4,11 @@
 </header>
 <section>
     <div class="add-booking__search-forms">
-        {{> "propertySearch/propertySearch" }}
-        {{> "customerSearch/customerSearch" }}
+        {{> "propertySearch/propertySearch" this }}
+        {{> "customerSearch/customerSearch" this }}
     </div>
     <div>
-        {{> "bookingForms/editBookingForm" }}
+        {{> "bookingForms/editBookingForm" this }}
     </div>
 </section>
 <script src="/javascript/modules/propertySearcher.js"></script>
