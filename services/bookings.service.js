@@ -10,6 +10,10 @@ class BookingsService {
     return await this.bookingModel.findOne({ id, withCustomers });
   }
 
+  async findBookingProperty(id) {
+    return await this.bookingModel.findBookingProperty(id)
+  }
+
   async create({ booking, customers }) {
     const newBooking = await this.bookingModel.create(booking);
     return await this.bookingModel.addCustomers({

@@ -68,18 +68,16 @@ class BookingsController {
     res.status(201).send({ message: "Customer added to booking" });
   }
 
-  edit(req, res) {
-    res.render("editBooking", {
-      // test data
-      bookingId: 1234,
-      start_date: "2020-07-04",
-      end_date: "2020-07-08",
-      property: 2,
-      properties: [
-        { id: 1, name: "Test Property 1" },
-        { id: 2, name: "Test Property 2" },
-      ],
+  async edit(req, res) {
+    const { id } = req.params;
+
+    const [[booking], customers] = await this.bookingService.findOne({
+      id,
+      withCustomers: true,
     });
+    const [property] = await this.bookingService.findBookingProperty(id);
+
+    res.render("editBooking", { booking, customers, property });
   }
 
   update(req, res) {
