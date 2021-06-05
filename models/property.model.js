@@ -1,5 +1,6 @@
 const { BaseModel } = require("./base.model");
 const autoBind = require("auto-bind");
+const {searchProperty} = require('./queries/properties.queries')
 
 class PropertyModel extends BaseModel {
   constructor() {
@@ -7,7 +8,7 @@ class PropertyModel extends BaseModel {
     autoBind(this);
   }
 
-  searchProperty({building_name}) {
+  searchProperty(building_name) {
     return new Promise((resolve, reject) => {
       this.pool.query(searchProperty, [building_name], (err, rows) => {
         if (err) {

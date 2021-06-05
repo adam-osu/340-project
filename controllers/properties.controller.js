@@ -12,9 +12,9 @@ class PropertiesController {
 
   async search(req, res) {
     const { building_name } = req.query;
-    const [properties] = await this.propertiesService.searchProperty( building_name );
+    const properties = await this.properties.searchProperty( building_name );
 
-    res.status(200).send({properties});
+    res.status(200).send(properties);
   }
 
   async index(req, res) {

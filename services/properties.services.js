@@ -4,7 +4,7 @@ class PropertiesService {
   }
 
   async searchProperty(building_name) {
-    return await this.customerModel.searchProperty(building_name);
+    return await this.propertyModel.searchProperty(building_name);
   }
   
   async findAll() {
