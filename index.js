@@ -35,6 +35,12 @@ app.engine(
         const paddedDay = day < 10 ? `0${day}` : day
 
         return `${year}-${paddedMonth}-${paddedDay}`
+      },
+      formatDateforTable: (rawDate) => {
+        return new Date(rawDate).toDateString()
+      },
+      formatCreatedAtDate: (rawDate) => {
+        return new Date(rawDate).toISOString()
       }
     }
   })

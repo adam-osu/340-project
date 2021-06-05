@@ -19,7 +19,7 @@
             <td><a href="/bookings/1">View</a></td>
             <td>{{this.total_due}}</td>
             <td>{{this.amount_paid}}</td>
-            <td>{{this.created_at}}</td>
+            <td>{{formatCreatedAtDate this.created_at}}</td>
             <td><a href="/invoices/edit/{{this.id}}">Edit</a></td>
           </tr>
         {{/each}}
