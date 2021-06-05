@@ -10,6 +10,7 @@ const {
   removeCustomer,
   findBookingProperty,
 } = require("./queries/bookings.queries");
+
 class BookingModel extends BaseModel {
   constructor() {
     super({ name: "bookings" });

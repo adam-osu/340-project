@@ -2,6 +2,11 @@ class PropertiesService {
   constructor({ propertyModel }) {
     this.propertyModel = propertyModel;
   }
+
+  async searchProperty(building_name) {
+    return await this.propertyModel.searchProperty(building_name);
+  }
+  
   async findAll() {
     return await this.propertyModel.findAll();
   }

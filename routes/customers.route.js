@@ -18,6 +18,13 @@ module.exports = (app) => {
   app.get("/customers/new", customersController._new);
 
   /**
+   * GET /customers/search
+   *
+   * Display search results table
+   */
+  app.get("/customers/search", customersController.search);
+
+  /**
    * GET /customers/:id
    *
    * Single customers page

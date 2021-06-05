@@ -24,6 +24,13 @@ class CustomersController {
     });
   }
 
+  async search(req, res) {
+    const { first_name, last_name } = req.query;
+    const customers = await this.customersService.searchCustomer(first_name, last_name);
+
+    res.status(200).send(customers);
+  }
+
   async delete(req, res) {
     const { id } = req.params;
     await this.customersService.delete(id);

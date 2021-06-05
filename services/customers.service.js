@@ -2,6 +2,11 @@ class CustomersService {
   constructor({ customerModel }) {
     this.customerModel = customerModel;
   }
+
+  async searchCustomer(first_name, last_name) {
+    return await this.customerModel.searchCustomer(first_name, last_name);
+  }
+  
   async findAll() {
     return await this.customerModel.findAll();
   }
