@@ -16,7 +16,7 @@
         <th>Max Occupancy</th>
         <th>Created At</th>
         <th></th>
-        <th></th>
+        {{!-- <th></th> --}}
       </thead>
       <tbody>
         {{#each properties}}
@@ -28,7 +28,7 @@
               <td>{{this.max_occupancy}}</td>
               <td>{{formatCreatedAtDate this.created_at}}</td>
               <td><a href="/properties/edit/{{this.id}}">Edit</a></td>
-              <td><a href="/properties/delete/{{this.id}}">Delete</a></td>
+              {{!-- <td><a href="/properties/delete/{{this.id}}">Delete</a></td> --}}
             </tr>
         {{/each}}
       </tbody>

@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const customerId = document.getElementById("customer_id").value;
 
+    // const deleteButton = document.getElementById("delete-customer-btn");
+    // deleteButton.addEventListener("click", async () => {
+    //   await CustomerDeleter.delete(customerId);
+    // });
+
     const customerUpdater = new EntityUpdater({
       inputIds: ["first_name", "last_name", "email"],
       updateUrl: `/customers/${customerId}`,

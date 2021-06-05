@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <td>End Date</td>
-        <td>{{formatDateforTable booking_end_date}}</td>
+        <td>{{formatDateforTable booking.end_date}}</td>
       </tr>
       <tr>
         <td>Created At</td>
@@ -41,10 +41,10 @@
         <td>Edit</td>
         <td><a href="/bookings/edit/{{booking.id}}">Edit</a></td>
       </tr>
-      <tr>
+      {{!-- <tr>
         <td>Delete</td>
         <td><a href="#">Delete</a></td>
-      </tr>
+      </tr> --}}
     </tbody>
   </table>
 </section>

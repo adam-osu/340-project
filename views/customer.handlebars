@@ -8,6 +8,7 @@
     </thead>
     <tbody>
       <tr>
+        <input type="hidden" name="" id="customer-id" value={{customer.id}}>
         <td>ID</td>
         <td>{{customer.id}}</td>
       </tr>
@@ -27,18 +28,20 @@
         <td>Created At</td>
         <td>{{formatCreatedAtDate customer.created_at}}</td>
       </tr>
-      <tr>
+      {{!-- <tr>
         <td>Bookings</td>
         <td><a href="#">View</a></td>
-      </tr>
+      </tr> --}}
       <tr>
         <td>Edit</td>
         <td><a href="/customers/edit/{{customer.id}}">Edit</a></td>
       </tr>
       <tr>
         <td>Delete</td>
-        <td><a href="/customers/delete/{{customer.id}}">Delete</a></td>
+        <td><button id="delete-customer-btn" class="btn--small">Delete</button></td>
       </tr>
     </tbody>
   </table>
 </section>
+<script src="/javascript/modules/customerDeleter.js"></script>
+<script src="/javascript/customer.js"></script>
