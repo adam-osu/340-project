@@ -47,6 +47,7 @@ class BaseModel {
   }
 
   update({ id, updates }) {
+    console.log(updates)
     return new Promise((resolve, reject) => {
       this.pool.query(
         `UPDATE ${this.name} SET ? WHERE id = ?;`,

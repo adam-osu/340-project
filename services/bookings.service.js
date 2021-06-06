@@ -16,10 +16,12 @@ class BookingsService {
 
   async create({ booking, customers }) {
     const newBooking = await this.bookingModel.create(booking);
-    return await this.bookingModel.addCustomers({
+    await this.bookingModel.addCustomers({
       customers,
       booking_id: newBooking.insertId,
     });
+
+    return newBooking
   }
 
   async addCustomers({ customer_ids, booking_id }) {

@@ -31,7 +31,7 @@ app.engine(
         const month = parsedDate.getMonth();
         const day = parsedDate.getDay();
 
-        const paddedMonth = month < 10 ? `0${month}` : month
+        const paddedMonth = month < 10 ? `0${month + 1}` : month + 1
         const paddedDay = day < 10 ? `0${day}` : day
 
         return `${year}-${paddedMonth}-${paddedDay}`
