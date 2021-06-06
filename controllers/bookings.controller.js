@@ -1,12 +1,19 @@
 const { BookingsService } = require("../services/bookings.service");
+const { InvoicesService } = require("../services/invoices.service");
+const { PropertiesService } = require("../services/properties.services");
 const autoBind = require("auto-bind");
 
 const { Booking } = require("../models/booking.model");
+const { Invoice } = require("../models/invoice.model");
+const { Property } = require("../models/property.model");
 const { cleanPick } = require("../utilities/cleanPick");
+const { update } = require("lodash");
 
 class BookingsController {
   constructor() {
     this.bookingService = new BookingsService({ bookingModel: Booking });
+    this.invoicesService = new InvoicesService({ invoiceModel: Invoice });
+    this.propertiesService = new PropertiesService({ propertyModel: Property });
     autoBind(this);
   }
 
@@ -47,7 +54,21 @@ class BookingsController {
 
     const customers = cleanPick(req.body, ["customer_ids"]);
 
-    await this.bookingService.create({ booking, customers });
+    const createdBooking = await this.bookingService.create({
+      booking,
+      customers,
+    });
+
+    const [property] = await this.propertiesService.findOne(
+      booking.property_id
+    );
+
+    await this.invoicesService.create({
+      start_date: booking.start_date,
+      end_date: booking.end_date,
+      booking_id: createdBooking.insertId,
+      rate: property.rate,
+    });
 
     res.redirect("/bookings");
   }
@@ -81,7 +102,6 @@ class BookingsController {
   }
 
   async update(req, res) {
-    console.log(req.body)
     const bookingUpdates = cleanPick(req.body, [
       "id",
       "property_id",
@@ -89,7 +109,23 @@ class BookingsController {
       "end_date",
     ]);
 
-    await this.bookingService.update({id: bookingUpdates.id, updates: bookingUpdates});
+    await this.bookingService.update({
+      id: bookingUpdates.id,
+      updates: bookingUpdates,
+    });
+
+    const [property] = await this.propertiesService.findOne(
+      bookingUpdates.property_id
+    );
+
+    if (bookingUpdates.start_date && bookingUpdates.end_date) {
+      await this.invoicesService.update({
+        start_date: bookingUpdates.start_date,
+        end_date: bookingUpdates.end_date,
+        booking_id: bookingUpdates.id,
+        rate: property.rate,
+      });
+    }
 
     res.redirect(`/bookings/${bookingUpdates.id}`);
   }

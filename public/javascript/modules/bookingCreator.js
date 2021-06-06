@@ -15,10 +15,16 @@ class BookingCreator {
       ...document.querySelectorAll("#current-customers tbody tr input"),
     ].map((node) => node.value);
 
-    if (!customer_ids.length || !property_id || !start_date || !end_date) {
-      console.log('Missing parameters')
-      return
-    } 
+    if (
+      !customer_ids.length ||
+      !property_id ||
+      !start_date ||
+      !end_date ||
+      start_date > end_date
+    ) {
+      console.log("Missing parameters or invalid date rate");
+      return;
+    }
 
     this.payload = {
       start_date,
@@ -32,7 +38,7 @@ class BookingCreator {
     this._initialize();
 
     if (!this.payload) {
-      return
+      return;
     }
 
     fetch("/bookings/", {
