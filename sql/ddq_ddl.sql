@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS customers;
 -- Create tables
 
 CREATE TABLE properties (
-    id INT(11) AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY,
+    id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     building_name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     rate DECIMAL(13,2) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE properties (
 ) ENGINE=InnoDB;
 
 CREATE TABLE bookings (
-    id INT(11) NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     start_date DATETIME NOT NULL,
     end_date DATETIME NOT NULL,
     property_id INT NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE bookings (
 ) ENGINE=InnoDB;
 
 CREATE TABLE customers (
-    id INT(11) AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY,
+    id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE bookings_customers  (
 ) ENGINE = InnoDB ;
 
 CREATE TABLE invoices (
-    id INT(11) AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY,
+    id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     booking_id INT(11) NOT NULL,
     total_due DECIMAL(13,2) NOT NULL,
     amount_paid DECIMAL(13,2) NOT NULL,
@@ -77,6 +77,18 @@ SET building_name = 'Oxbow',
     created_at = '2021-2-2';
 
 INSERT INTO bookings 
+SET start_date = '2021-10-20 12:00:00.000', 
+    end_date = '2021-11-10 12:00:00.000',
+    property_id = 2,
+    created_at = '2021-1-15 12:00:00.000';
+
+INSERT INTO bookings 
+SET start_date = '2021-9-8 12:00:00.000', 
+    end_date = '2021-9-7 12:00:00.000',
+    property_id = 1,
+    created_at = '2020-11-19 12:00:00.000';
+
+INSERT INTO bookings 
 SET start_date = '2020-11-20 12:00:00.000', 
     end_date = '2020-11-27 12:00:00.000',
     property_id = 1,
@@ -94,6 +106,12 @@ SET first_name = 'Jane',
     email = 'jane@email.com',
     created_at = '2020-11-15 11:15:00.000';
 
+INSERT INTO customers
+SET first_name = 'Chris',
+    last_name = 'Adamo',
+    email = 'group90@email.com',
+    created_at = '2020-11-15 11:15:00.000';
+
 INSERT INTO bookings_customers
 SET customer_id = 1,
     booking_id = 1,
@@ -104,8 +122,30 @@ SET customer_id = 2,
     booking_id = 1,
     created_at = '2020-11-15 12:00:00.350';
 
+INSERT INTO bookings_customers
+SET customer_id = 3,
+    booking_id = 2,
+    created_at = '2020-11-15 12:00:00.350';
+
+INSERT INTO bookings_customers
+SET customer_id = 2,
+    booking_id = 3,
+    created_at = '2020-11-15 12:00:00.350';
+
 INSERT INTO invoices
 SET booking_id = 1,
     total_due = 1050,
     amount_paid = 600,
+    created_at = '2021-3-1';
+
+INSERT INTO invoices
+SET booking_id = 2,
+    total_due = 150,
+    amount_paid = 60,
+    created_at = '2021-3-1';
+
+INSERT INTO invoices
+SET booking_id = 3,
+    total_due = 105,
+    amount_paid = 40,
     created_at = '2021-3-1';

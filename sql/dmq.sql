@@ -91,7 +91,7 @@ SET booking_id = :booking_id_from_new_booking,
     total_due = (:property_rate_from_booking_id * days_booked),
     amount_paid = :default_amount_paid,
     created_at = :get_current_time
-);
+;
 
 UPDATE invoices
 SET total_due = :property_rate_input,
